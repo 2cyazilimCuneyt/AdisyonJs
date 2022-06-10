@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {ADD_MENU, GET_MENU_LIST, REMOVE_MENU} from './types';
+import {ADD_MENU, GET_MENU_LIST, REMOVE_MENU,SELECT_MENU} from './types';
 
 export const getMenuList = () => {
     return (dispatch) => {
@@ -32,6 +32,15 @@ export const removeMenu = () => {
     return (dispatch) => {
         dispatch ({
             type: REMOVE_MENU
+        })
+    }
+}
+
+export const selectMenu = (menu) => {
+    return (dispatch) => {
+        dispatch ({
+            type: SELECT_MENU,
+            payload: menu
         })
     }
 }

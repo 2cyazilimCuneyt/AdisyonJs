@@ -8,8 +8,9 @@ class MenuList extends Component {
         this.props.getMenuList();
     }
 
-    onClicked (menuId) {
-        this.props.getProductList(menuId);
+    onClicked (menu) {
+        this.props.selectMenu(menu);
+        this.props.getProductList(menu.menuId);
     }
 
     render() {
@@ -17,7 +18,7 @@ class MenuList extends Component {
             <div>
                <ListGroup>
                     {this.props.menus.menu.map((menu)=> (
-                        <ListGroupItem onClick={()=>this.onClicked(menu.menuId)} key={menu.menuId} className="RoomButton">
+                        <ListGroupItem onClick={()=>this.onClicked(menu)} key={menu.menuId} className="RoomButton">
                             {menu.name}
                         </ListGroupItem>
                     ))}

@@ -54,6 +54,7 @@ class AddMenu extends Component {
 }
 
 const mapStateToProps = state => {
+    console.log(state);
     return {
         menu: state.menu,
         product: state.product

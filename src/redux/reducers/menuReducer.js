@@ -1,7 +1,8 @@
-import {ADD_MENU, GET_MENU_LIST} from '../actions/types';
+import {ADD_MENU, GET_MENU_LIST,SELECT_MENU} from '../actions/types';
 
 const INISIAL_STATE = {
-    menu: []
+    menu: [],
+    selectedMenu:{},
 }
 
 export default (state= INISIAL_STATE, action) => {
@@ -10,6 +11,8 @@ export default (state= INISIAL_STATE, action) => {
             return {...state, menu: action.payload}
         case ADD_MENU:
             return {...state, menu: state.menu.concat(action.payload)}
+        case SELECT_MENU:
+            return {...state, selectedMenu: action.payload}
         default:
             return state;
     }
