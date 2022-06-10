@@ -14,9 +14,11 @@ export const getProductList = (id) => {
 }
 
 export const addProduct = (product) => {
+    console.log('1--------------->', product);
     return (dispatch) => {
         axios.post('https://api.terracesarkoy.com/api/Product/addproduct', product)
         .then(response => {
+            console.log('2--------------->', response.data);
             dispatch ({
                 type: ADD_PRODUCT,
                 payload: response.data

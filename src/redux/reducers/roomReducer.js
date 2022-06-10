@@ -1,7 +1,8 @@
-import {ADD_ROOM, GET_ROOM_LIST} from '../actions/types';
+import {ADD_ROOM, GET_ROOM_LIST, SELECT_ROOM} from '../actions/types';
 
 const INISIAL_STATE = {
-    room: []
+    room: [],
+    selectedRoom: {},
 }
 
 export default (state= INISIAL_STATE, action) => {
@@ -10,6 +11,8 @@ export default (state= INISIAL_STATE, action) => {
             return {...state, room: action.payload}
         case ADD_ROOM:
             return {...state, room: state.room.concat(action.payload)}
+        case SELECT_ROOM:
+            return {...state, selectedRoom: action.payload}
         default:
             return state;
     }

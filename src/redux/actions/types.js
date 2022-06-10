@@ -16,4 +16,5 @@ export const GET_ROOM_LIST = 'get_room_list';
 export const ADD_TABLE = 'add_table';
 export const GET_TABLE_LIST = 'get_table_list';
 
-export const SELECT_MENU='select_menu';
+export const SELECT_MENU = 'select_menu';
+export const SELECT_ROOM = 'select_room';

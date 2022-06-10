@@ -5,6 +5,7 @@ const INITIAL_STATE={
  }
  
  export default (state = INITIAL_STATE, action) => {
+     console.log('3------->', action.payload )
      switch (action.type){
          case  ADD_PRODUCT:
              return {...state, products: state.products.concat(action.payload)}
@@ -13,5 +14,4 @@ const INITIAL_STATE={
          default:
              return state;
      }
-     
  }

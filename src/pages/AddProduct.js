@@ -18,7 +18,7 @@ class AddProduct extends Component {
     saveProduct () {
         let product = {
             productId: 0,
-            menuId: this.state.menuId,
+            menuId: this.props.selectedMenu.menuId,
             name: this.state.productName,
             price: this.state.price,
             photo:'',
@@ -78,25 +78,7 @@ class AddProduct extends Component {
                             value={this.state.description} 
                         />
                     </FormGroup>
-                    <FormGroup>
-                        <Label for="exampleSelect">
-                        Menü Seç
-                        </Label>
-                        <Input
-                            id="exampleSelect"
-                            name="select"
-                            type="select"
-                            onChange={this.handleChange} 
-                            value={this.state.menuId}
-                        >
-                            <option>Menu seçiniz..</option>
-                            {this.props.menus.menu.map(menu=>
-                                <option key={menu.menuId} value={menu.menuId}>
-                                    {menu.name}
-                                </option>
-                            )}
-                        </Input>
-                    </FormGroup>
+                    
                     {/* <FormGroup>
                         <Label for="exampleFile">
                         File
@@ -119,7 +101,7 @@ class AddProduct extends Component {
 
 const mapStateToProps = state => {
     return {
-        menus: state.menu,
+        selectedMenu: state.menu.selectedMenu,
         products: state.product
     }
 }

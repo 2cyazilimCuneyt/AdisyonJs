@@ -16,8 +16,9 @@ class RoomList extends Component {
     this.props.getRoomList();
 }
 
-onClicked (roomId) {
-    this.props.getTableList(roomId);
+onClicked (room) {
+  this.props.selectRoom(room);
+    this.props.getTableList(room.roomId);
 }
 
   render() {
@@ -25,7 +26,7 @@ onClicked (roomId) {
       <div>
         <ListGroup>
           {this.props.rooms.room.map(room => (
-            <ListGroupItem onClick={()=>this.onClicked(room.roomId)} key={room.roomId} className="RoomButton">
+            <ListGroupItem active={room.roomId === this.props.selectedRoom.roomId} onClick={()=>this.onClicked(room)} key={room.roomId} className="RoomButton">
               {room.name}
             </ListGroupItem>
           ))}
@@ -36,9 +37,10 @@ onClicked (roomId) {
 }
 
 const mapStateToProps = state => {
-  console.log('room',state.room);
+  console.log('room',state.room.selectedRoom);
   return {
-      rooms: state.room
+      rooms: state.room,
+      selectedRoom: state.room.selectedRoom,
   }
 }
 

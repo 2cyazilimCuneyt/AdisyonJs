@@ -1,5 +1,5 @@
 import React, { Component} from 'react';
-import { Row, Col, InputGroup, Input, Button} from 'reactstrap';
+import { Row, Col, InputGroup, Input, Button, Badge} from 'reactstrap';
 import NavbarMenu from '../components/NavbarMenu';
 import RoomList from '../components/RoomList';
 import AddTable from './AddTable';
@@ -20,10 +20,8 @@ class AddRoom extends Component {
         roomId: 0,
         name: this.state.roomName,
     }
-    console.log('1---------->', this.props.rooms);
     this.props.addRoom(room);
     this.setState({roomName:''})
-    console.log('4---------->', room);
   } 
   render(){
     return (
@@ -40,6 +38,7 @@ class AddRoom extends Component {
               </div>
             </Col>
             <Col xs="6">
+            <h2 style={{marginTop:20, marginLeft:15}}>Salon Adı : <Badge color="success">{this.props.selectedRoom.name}</Badge></h2>
               <TableList/>
             </Col>
             <Col xs="3">
@@ -55,8 +54,9 @@ class AddRoom extends Component {
 }
 
 const mapStateToProps = state => {
+  console.log(state.room.selectedRoom)
   return {
-      rooms: state.room
+      selectedRoom: state.room.selectedRoom,
   }
 }
 export default connect(mapStateToProps, actions)(AddRoom);

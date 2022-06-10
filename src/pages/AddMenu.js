@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {Col, Row, Button, InputGroup, Input} from 'reactstrap';
+import {Col, Row, Button, InputGroup, Input, Badge} from 'reactstrap';
 import MenuList from '../components/MenuList';
 import * as actions from '../redux/actions';
 import ProductList from '../components/ProductList';
@@ -39,6 +39,7 @@ class AddMenu extends Component {
                         </div>
                     </Col>
                     <Col xs="5">
+                        <h2 style={{marginTop:20, marginLeft:15}}>Menü Adı : <Badge color="success">{this.props.selectedMenu.name}</Badge></h2>
                         <ProductList/>
                     </Col>
                     <Col xs="4">
@@ -57,7 +58,8 @@ const mapStateToProps = state => {
     console.log(state);
     return {
         menu: state.menu,
-        product: state.product
+        product: state.product,
+        selectedMenu: state.menu.selectedMenu
     }
 }
 

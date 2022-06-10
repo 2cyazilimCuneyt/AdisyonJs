@@ -18,7 +18,7 @@ class MenuList extends Component {
             <div>
                <ListGroup>
                     {this.props.menus.menu.map((menu)=> (
-                        <ListGroupItem onClick={()=>this.onClicked(menu)} key={menu.menuId} className="RoomButton">
+                        <ListGroupItem active={menu.menuId === this.props.selectedMenu.menuId} onClick={()=>this.onClicked(menu)} key={menu.menuId} className="RoomButton">
                             {menu.name}
                         </ListGroupItem>
                     ))}
@@ -33,6 +33,7 @@ const mapStateToProps = state => {
     return {
         menus: state.menu,
         product: state.product.products,
+        selectedMenu: state.menu.selectedMenu,
     }
 }
 

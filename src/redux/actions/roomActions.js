@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {GET_ROOM_LIST,ADD_ROOM} from './types';
+import { GET_ROOM_LIST, ADD_ROOM, SELECT_ROOM } from './types';
 
 export const getRoomList = () => {
     return (dispatch) => {
@@ -25,6 +25,15 @@ export const addRoom = (room,) => {
                 type: ADD_ROOM,
                 payload: response.data
             })
+        })
+    }
+}
+
+export const selectRoom = (room) => {
+    return (dispatch) => {
+        dispatch ({
+            type: SELECT_ROOM,
+            payload: room
         })
     }
 }

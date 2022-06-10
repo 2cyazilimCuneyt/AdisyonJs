@@ -9,7 +9,6 @@ class AddTable extends Component {
     super(props);
     this.state = {
         tableName: '',
-        roomId:0,
         description: '',
     }
 }
@@ -18,7 +17,7 @@ class AddTable extends Component {
 saveTable () {
     let table = {
         tableId: 0,
-        roomId: this.state.roomId,
+        roomId: this.props.selectedRoom.roomId,
         name: this.state.tableName,
         description: this.state.description,
         statu: 0,
@@ -30,7 +29,6 @@ saveTable () {
     }
     this.props.addTable(table);
     this.setState({tableName: '',
-    roomId:0,
     description: '',})
     
 }
@@ -67,26 +65,6 @@ handleChange =(event) => {
                             value={this.state.description} 
                         />
                     </FormGroup>
-                    <FormGroup>
-                        <Label for="exampleSelect">
-                        Salon Seç
-                        </Label>
-                        <Input
-                            id="exampleSelect"
-                            name="select"
-                            type="select"
-                            onChange={this.handleChange} 
-                            value={this.state.roomId}
-                        >
-                            <option>Salon Seçiniz..</option>
-                            {this.props.rooms.room.map(room=>
-                            
-                                <option key={room.roomId} value={room.roomId}>
-                                    {room.name}
-                                </option>
-                            )}
-                        </Input>
-                    </FormGroup>
                     <Button onClick={()=> this.saveTable()} color="success">
                         Kaydet
                     </Button>
@@ -97,9 +75,10 @@ handleChange =(event) => {
 }
 
 const mapStateToProps = state => {
+console.log(state.room.selectedRoom)
   return {
       tables: state.table,
-      rooms: state.room,
+      selectedRoom: state.room.selectedRoom,
   }
 }
 
